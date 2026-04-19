@@ -1,14 +1,14 @@
 // index.js
 const weatherApi = "https://api.weather.gov/alerts/active?area="
 
-const stateeInput = document.getElementById('state-input'); 
+const stateInput = document.getElementById('state-input'); 
 const fetchButton = document.getElementById('fetch-alerts');
 const alertsDisplay = document.getElementById('alerts-display');
 const errorMessage = document.getElementById('error-message');
 
 async function fetchWeatherAlerts(state) {
     resetUI()
-    if (!state || state.length !== 3) {
+    if (!state || state.length !== 2) {
         displayError("Please enter a valid 2-letter state abbreviation.");
         return;
     }
@@ -31,7 +31,8 @@ async function fetchWeatherAlerts(state) {
 function displayAlerts(data, state) {
     const features = data.features;
     const count = features.length;
-    const upperState = state.toUpperCase();
+    const upperState = state.toUpperCase(); 
+
 
     const title = document.createElement('p');
     title.textContent = `Current watches, warnings, and advisories for ${upperState}: ${count}`;
