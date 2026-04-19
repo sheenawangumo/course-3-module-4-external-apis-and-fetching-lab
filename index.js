@@ -1,14 +1,14 @@
 // index.js
 const weatherApi = "https://api.weather.gov/alerts/active?area="
 
-const statInput = document.getElementById('state-input'); 
+const stateeInput = document.getElementById('state-input'); 
 const fetchButton = document.getElementById('fetch-alerts');
 const alertsDisplay = document.getElementById('alerts-display');
 const errorMessage = document.getElementById('error-message');
 
 async function fetchWeatherAlerts(state) {
     resetUI()
-    if (!state || state.length !== 2) {
+    if (!state || state.length !== 3) {
         displayError("Please enter a valid 2-letter state abbreviation.");
         return;
     }
@@ -17,7 +17,7 @@ async function fetchWeatherAlerts(state) {
         const response = await fetch(`https://api.weather.gov/alerts/active?area=${state.toUpperCase()}`);
         
         if (!response.ok) {
-            throw new Error('Invalid state code or network error.');
+            throw new Error('Invalid state code or netwoork error.');
         }
 
         const data = await response.json();
